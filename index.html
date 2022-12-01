@@ -77,6 +77,77 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-vue2-0-路由history模式和hash模式的区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/01/vue2-0-%E8%B7%AF%E7%94%B1history%E6%A8%A1%E5%BC%8F%E5%92%8Chash%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2022-12-01T00:59:48.000Z" itemprop="datePublished">2022-12-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/12/01/vue2-0-%E8%B7%AF%E7%94%B1history%E6%A8%A1%E5%BC%8F%E5%92%8Chash%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB/">vue2.0 路由history模式和hash模式的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ol>
+<li>vue 本质上是一个单页面应用，这个单页面应用的所有页面都是通过虚拟 dom 最终通过根 vue(app.vue)渲染到 index.html 上的, 而 vue 项目中呈现的多个页面，就是通过 vue-router 来渲染加载的。</li>
+<li>vue-router 分为两种模式来呈现，history 和 hash 模式。</li>
+</ol>
+<h1 id="1-history-模式："><a href="#1-history-模式：" class="headerlink" title="1.history 模式："></a>1.history 模式：</h1><ol>
+<li>外观上和传统的前端路径没什么不同，比较符合人的使用习惯，比较美观，也比较利于 SEO 的搜索推送。</li>
+<li>原理基于<code>html5</code>的<code>history</code>对象的新特性<code>pushState()</code>和<code>replaceState()</code>(主要实现依据)，以及监听<code>popstate</code>事件共同来实现的。<ul>
+<li><code>pushState()</code>和<code>replaceState()</code>并不会促使页面的刷新，也不会触发<code>popstate</code>事件，只会改变 url 和记录浏览器的状态，<code>pushState()</code>是新增一个历史记录，<code>replaceState()</code>是替换当前的历史记录。</li>
+<li>使用前进后退按钮，或者调用<code>history</code>的<code>go()</code>,<code>back()</code>和<code>forward()</code>方法可以刷新页面，并触发<code>popstate</code>事件，然后在事件中再进行相应的页面跳转。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">history</span>.<span class="title function_">pushState</span>(state,title,path);</span><br><span class="line"><span class="variable language_">window</span>.<span class="property">history</span>.<span class="title function_">replaceState</span>(state,title,path);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;pushState&#x27;</span>,() = &gt; &#123;</span><br><span class="line">    <span class="comment">//在这里实现相应的页面内容的变化渲染</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;replaceState&#x27;</span>,() = &gt; &#123;</span><br><span class="line">    <span class="comment">//在这里实现相应的页面内容的变化渲染</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>传统的前端应用，一个特定的路径下对应着服务器上的一个特定的前端 html 文件的。因为 history 模式和传统路径相同，所以在浏览器上使用传统路径搜索时，就要给服务器发送请求，寻找该路径下的对应的 html，但是 vue 项目打包存在服务器上的前端文件只有 index.html,所以这个路径在 vue 的前端项目所在的服务其上时绝对找不到的，因此会报页面 404 错误。此时需要在服务器上配置安全路径，如果输入了无法找到的路径，就默认重定向的 vue 的 index.html 上，然后这个路径进入到 index.html 上，再根据 vue-router 渲染呈现相应的页面。(服务器具体怎么配置，查询官网即可)</li>
+</ol>
+<h1 id="2-hash-模式："><a href="#2-hash-模式：" class="headerlink" title="2.hash 模式："></a>2.hash 模式：</h1><ol>
+<li>外观上与传统 url 多增加了一个#，这个把 url 主体和后面的路径以及参数分隔开，不美观，也不利于后期的 SEO 搜索，</li>
+<li>原理就是基于监听<code>hashChage</code>事件，然后通过<code>location.hash</code>值来进行相应的页面渲染和切换。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;replaceState&#x27;</span>,() = &gt; &#123;</span><br><span class="line">    <span class="comment">// 获取当前url的哈希值</span></span><br><span class="line">    <span class="keyword">const</span> _hash = location.<span class="property">hash</span></span><br><span class="line">    <span class="comment">// 根据不同的哈希值显示不同的内容</span></span><br><span class="line">    <span class="keyword">switch</span>(_hash) &#123;</span><br><span class="line">         <span class="keyword">case</span> <span class="string">&#x27;/#a&#x27;</span>:</span><br><span class="line">            <span class="comment">//在这里实现相应的页面内容的变化渲染</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">         <span class="keyword">case</span> <span class="string">&#x27;/#b&#x27;</span>:</span><br><span class="line">           <span class="comment">//在这里实现相应的页面内容的变化渲染</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">         <span class="keyword">case</span> <span class="string">&#x27;/#c&#x27;</span>:</span><br><span class="line">            <span class="comment">//在这里实现相应的页面内容的变化渲染</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>：</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>hash 模式因为#把 url 的接口和#号后面的路径参数一分为二，所以这种模式不会刷新页面，也不会向服务器发送请求寻找特定 html 文件。hash 模式实现原理比较简单，可以适配各种环境和浏览器版本，也无需进行服务器上的适配。</li>
+</ol>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><ol>
+<li>hash 和 history 模式的实现过程中，都是尽量不刷新页面，不向服务器发送请求，都在单页面文件 index.html 中实现的渲染过程。Vue-router 配合 Vue 的虚拟 Dom，可以极大的提升前端页面加载的性能。</li>
+<li>虽然 hash 样式上多了一个#，不美观且有损 SEO 搜索的效率，但是因为 hash 使用的是老特性，所以 hash 模式可以适配低版本的浏览器和低版本的 html 页面，并且无需配置服务器定向路径。</li>
+<li>虽然 history 在习惯上更符合人的使用传统有利于 SEO，但是实现原理是 Html5 才赋予的新特性，所以他无法适配低版本浏览器，并且 history 需要在服务器上进行适配。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hoson09.github.io/2022/12/01/vue2-0-%E8%B7%AF%E7%94%B1history%E6%A8%A1%E5%BC%8F%E5%92%8Chash%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="clb4del1v00007stb97t92al5" data-title="vue2.0 路由history模式和hash模式的区别" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" rel="tag">前端技术分享</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-vue2-0-extend-component" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/08/27/vue2-0-extend-component/" class="article-date">
@@ -380,7 +451,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
     </div>
   </div>
 
@@ -391,6 +462,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/12/01/vue2-0-%E8%B7%AF%E7%94%B1history%E6%A8%A1%E5%BC%8F%E5%92%8Chash%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB/">vue2.0 路由history模式和hash模式的区别</a>
+          </li>
         
           <li>
             <a href="/2022/08/27/vue2-0-extend-component/">vue2.0 extend &amp;&amp; component</a>
