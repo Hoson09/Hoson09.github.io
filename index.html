@@ -77,6 +77,179 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-SQL" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/24/SQL/" class="article-date">
+  <time class="dt-published" datetime="2023-01-24T03:09:15.000Z" itemprop="datePublished">2023-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/01/24/SQL/">SQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-数据库以及分类"><a href="#1-数据库以及分类" class="headerlink" title="1. 数据库以及分类"></a>1. 数据库以及分类</h1><ul>
+<li>MySQL 数据库，Oracle 数据库，SQL Server 数据库，属于关系型数据库（SQL 数据库）。</li>
+<li>MongoDB 数据库，属于非关系型数据库（非 SQL 数据库）</li>
+</ul>
+<h1 id="2-传统数据库"><a href="#2-传统数据库" class="headerlink" title="2. 传统数据库"></a>2. 传统数据库</h1><h2 id="1-传统数据库的数据组织结构"><a href="#1-传统数据库的数据组织结构" class="headerlink" title="1.传统数据库的数据组织结构"></a>1.传统数据库的数据组织结构</h2><ul>
+<li>数据库（database）</li>
+<li>数据表（table）</li>
+<li>数据行（row）</li>
+<li>字段（field）</li>
+</ul>
+<h2 id="2-安装并配置-MySQL-数据"><a href="#2-安装并配置-MySQL-数据" class="headerlink" title="2.安装并配置 MySQL 数据"></a>2.安装并配置 MySQL 数据</h2><ul>
+<li>MySQL server:<code>专门用来提供数据存储和服务的软件</code></li>
+<li>MySQL WorkBench：<code>可视化的MySQL的管理工具</code></li>
+</ul>
+<h2 id="3-SQL-言语"><a href="#3-SQL-言语" class="headerlink" title="3.SQL 言语"></a>3.SQL 言语</h2><h3 id="1-SELECT-语句"><a href="#1-SELECT-语句" class="headerlink" title="1.SELECT 语句"></a>1.SELECT 语句</h3><ul>
+<li>SELECT * FROM 表名称</li>
+<li>SELECT 列名称 FROM 表名称</li>
+</ul>
+<h3 id="2-INSERT-INTO-语句"><a href="#2-INSERT-INTO-语句" class="headerlink" title="2. INSERT INTO 语句"></a>2. INSERT INTO 语句</h3><ul>
+<li>INSERT INTO table_name(row1,row2) VALUES (val1,val2)</li>
+</ul>
+<h3 id="3-UPDATE-语句"><a href="#3-UPDATE-语句" class="headerlink" title="3. UPDATE 语句"></a>3. UPDATE 语句</h3><ul>
+<li>UPDATE table SET filed &#x3D; ‘val’ WHERE filed &#x3D; ‘something’</li>
+</ul>
+<h3 id="4-DELETE-语句"><a href="#4-DELETE-语句" class="headerlink" title="4. DELETE 语句"></a>4. DELETE 语句</h3><ul>
+<li>DELETE FROM tablen WHERE field &#x3D; ‘val’</li>
+</ul>
+<h3 id="5-WHERE-子句-（条件限定语句）"><a href="#5-WHERE-子句-（条件限定语句）" class="headerlink" title="5. WHERE 子句 （条件限定语句）"></a>5. WHERE 子句 （条件限定语句）</h3><ul>
+<li>SQL 语句 + WHERE 列 运算符 值</li>
+</ul>
+<h3 id="6-AND-和-OR-运算符"><a href="#6-AND-和-OR-运算符" class="headerlink" title="6. AND 和 OR 运算符"></a>6. AND 和 OR 运算符</h3><ul>
+<li>一般和 WHERE 联合起来使用,提供多种条件查询</li>
+</ul>
+<h3 id="7-ORDER-BY-语句"><a href="#7-ORDER-BY-语句" class="headerlink" title="7. ORDER BY 语句"></a>7. ORDER BY 语句</h3><h4 id="1-排序"><a href="#1-排序" class="headerlink" title="1.排序"></a>1.排序</h4><ul>
+<li>SELECT * FROM tbale ORDER BY status;（默认升序）</li>
+<li>SELECT * FROM table ORDER BY status ASC;（升序）</li>
+<li>SELECT * FROM table ORDER BY id DESC;(降序排序)</li>
+</ul>
+<h4 id="2-多重排序"><a href="#2-多重排序" class="headerlink" title="2.多重排序"></a>2.多重排序</h4><ul>
+<li>SELECT * FROM table ORDER BY status DESC,userName ASC<br>先根据 status 进行降序排序，再根据 userName 进行升序排序。</li>
+</ul>
+<h3 id="6-COUNT-函数"><a href="#6-COUNT-函数" class="headerlink" title="6. COUNT(*)函数"></a>6. COUNT(*)函数</h3><ul>
+<li>SELECT COUNT(*) FROM table WHERE status &#x3D; 0<br>统计表里面 status 为 0 的数据的总数量。(此时数据库会出现一个名字叫 COUNT(*)的列,然后显示数据的多少个)</li>
+</ul>
+<h3 id="7-AS-为列设置别名"><a href="#7-AS-为列设置别名" class="headerlink" title="7. AS 为列设置别名"></a>7. AS 为列设置别名</h3><ul>
+<li>SELECT COUNT(*) AS total FROM table WHERE status &#x3D; 0<br>统计表里面 status 为 0 的数据的总数量。(此时数据库会出现一个名字叫 total 的列,然后显示数据结果)</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hoson09.github.io/2023/01/24/SQL/" data-id="cld9nuqa80000fgtb6cpidw06" data-title="SQL" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/" rel="tag">sql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-terminal-快捷键汇总" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/23/terminal-%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/" class="article-date">
+  <time class="dt-published" datetime="2023-01-23T04:44:03.000Z" itemprop="datePublished">2023-01-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/01/23/terminal-%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/">terminal 快捷键汇总</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="cmd"><a href="#cmd" class="headerlink" title="cmd"></a>cmd</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">通过 ↑ 键可以快速找到上一次的命令。</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用 tab 键可以快速补全路径。</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用 esc 键可以快速清空当前本条命令。</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用 cls 命令可以清空当前所有命令。</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="gitbash"><a href="#gitbash" class="headerlink" title="gitbash"></a>gitbash</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hoson09.github.io/2023/01/23/terminal-%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/" data-id="cld9nuqaf0001fgtbd5bufua7" data-title="terminal 快捷键汇总" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/terminal-directives/" rel="tag">terminal directives</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-三国有感" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/01/%E4%B8%89%E5%9B%BD%E6%9C%89%E6%84%9F/" class="article-date">
+  <time class="dt-published" datetime="2022-12-01T04:55:45.000Z" itemprop="datePublished">2022-12-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/12/01/%E4%B8%89%E5%9B%BD%E6%9C%89%E6%84%9F/">三国有感</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="三国大家都不陌生"><a href="#三国大家都不陌生" class="headerlink" title="三国大家都不陌生"></a>三国大家都不陌生</h1><h2 id="1-刘关张赵诸葛"><a href="#1-刘关张赵诸葛" class="headerlink" title="1. 刘关张赵诸葛"></a>1. 刘关张赵诸葛</h2><ol>
+<li>大概没有这老哥几个，估计三国不会这么有名，也就是中国历史中一段普通的乱世。 见过了太多的兄友弟恭，太多的父慈子孝，大部分人在权力面前都是卑劣的不择手段的，但是这几个人的感情和行为可以说是颠覆了人们的想象，虽然经历了几千年依然闪耀着光芒，令人神往。</li>
+</ol>
+<h2 id="2-曹魏"><a href="#2-曹魏" class="headerlink" title="2. 曹魏"></a>2. 曹魏</h2><h2 id="3-江东和十万"><a href="#3-江东和十万" class="headerlink" title="3. 江东和十万"></a>3. 江东和十万</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hoson09.github.io/2022/12/01/%E4%B8%89%E5%9B%BD%E6%9C%89%E6%84%9F/" data-id="clb4n7wt00000ygtb6m6j53td" data-title="三国有感" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/" rel="tag">生活琐事</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-vue2-0-路由history模式和hash模式的区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/12/01/vue2-0-%E8%B7%AF%E7%94%B1history%E6%A8%A1%E5%BC%8F%E5%92%8Chash%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
@@ -432,7 +605,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" rel="tag">使用指南</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" rel="tag">前端技术分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/" rel="tag">生活琐事</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/" rel="tag">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminal-directives/" rel="tag">terminal directives</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" rel="tag">使用指南</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" rel="tag">前端技术分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/" rel="tag">生活琐事</a></li></ul>
     </div>
   </div>
 
@@ -442,7 +615,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" style="font-size: 10px;">使用指南</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" style="font-size: 20px;">前端技术分享</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/" style="font-size: 10px;">生活琐事</a>
+      <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/terminal-directives/" style="font-size: 10px;">terminal directives</a> <a href="/tags/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" style="font-size: 10px;">使用指南</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" style="font-size: 20px;">前端技术分享</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/" style="font-size: 15px;">生活琐事</a>
     </div>
   </div>
 
@@ -451,7 +624,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
     </div>
   </div>
 
@@ -464,23 +637,23 @@
       <ul>
         
           <li>
+            <a href="/2023/01/24/SQL/">SQL</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/23/terminal-%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/">terminal 快捷键汇总</a>
+          </li>
+        
+          <li>
+            <a href="/2022/12/01/%E4%B8%89%E5%9B%BD%E6%9C%89%E6%84%9F/">三国有感</a>
+          </li>
+        
+          <li>
             <a href="/2022/12/01/vue2-0-%E8%B7%AF%E7%94%B1history%E6%A8%A1%E5%BC%8F%E5%92%8Chash%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB/">vue2.0 路由history模式和hash模式的区别</a>
           </li>
         
           <li>
             <a href="/2022/08/27/vue2-0-extend-component/">vue2.0 extend &amp;&amp; component</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/28/Vue2-0-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6-JSX-h%E5%87%BD%E6%95%B0-slot/">Vue2.0 函数式组件&amp;JSX&amp;h函数&amp;slot</a>
-          </li>
-        
-          <li>
-            <a href="/2022/05/11/Blog-First/">Blog First</a>
-          </li>
-        
-          <li>
-            <a href="/2022/05/10/hello-world/">Hello World</a>
           </li>
         
       </ul>
@@ -496,7 +669,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2022 George HuYi<br>
+      &copy; 2023 George HuYi<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
